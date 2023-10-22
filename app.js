@@ -15,7 +15,7 @@ left.textContent = `Bombs left = ${bombCount}`;
 function changeTotalBombs(placed){
     let total = document.querySelector(".placed");
     total.textContent = `Placed = ${placed}`;
-    left.textContent = `Bombs left = ${bombCount-placed}`;
+    left.textContent = `Bombs left = ${TotalBombs-placed}`;
     if(placed==TotalBombs && incorrect==0){
         alert("Won");
     }
