@@ -1,0 +1,80 @@
+body{
+    text-align: center;
+    background-color: black;
+}
+*{
+    color: white;
+}
+.main{
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+img{
+    height: 50px;
+    width: 50px;
+}
+.info{
+    display: flex;
+    margin: 0rem auto;
+    flex-direction: row;
+    justify-content:space-evenly;
+    color: white;
+    font-size: 20px;
+    width: 150px;
+}
+.div-b{
+    background-color: gray;
+    height: fit-content;
+    width: fit-content;
+    text-wrap: nowrap;
+    border: 2px rgb(0, 255, 140) solid;
+    margin: 0rem 3rem;
+    border-radius: 2rem;
+    padding: 1rem 2rem;
+}
+.board{
+    margin: auto;
+    margin-top: 2rem;
+    height: 90vh;
+    width: 90vh;
+    background-color: rgb(39, 39, 39);
+    display: flex;
+    flex-direction: column;
+}
+
+.block{
+    background-color: rgb(46, 46, 46);
+}
+
+.row{
+    display: flex;
+    flex-direction: row;
+    height: 10%;
+}
+
+.button{
+    background-color: rgb(27, 27, 27);
+    width: 10%;
+    padding: 1px 1px;
+    margin: 2px;
+    border-radius: 10px;
+}
+.button:hover{
+    border-color: greenyellow;
+}
+.bomb{
+    height: 70%;
+    width: 70%;
+}
+.bomb-display{
+    display: none;
+}
+.near-bomb{
+    display: none;
+}
+.flag{
+    height: 70%;
+    width: 70%;
+}
