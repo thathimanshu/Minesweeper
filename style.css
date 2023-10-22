@@ -80,6 +80,13 @@ img{
 }
 
 @media (max-width:700px){
+    .info{
+        align-items: center;
+        justify-content: right;
+    }
+    .div-b{
+        padding: 0.5rem;
+    }
     .board{
         height: 90vh;
         width: 90vh;
@@ -91,5 +98,6 @@ img{
         font-size: 1.5rem;
         margin: 0 0;
         padding:0 0;
+        
     }
 }
