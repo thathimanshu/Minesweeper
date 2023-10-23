@@ -26,9 +26,10 @@ img{
 }
 .div-b{
     background-color: rgb(39, 39, 39);
+    text-wrap: nowrap;
+    white-space: nowrap;
     height: fit-content;
     width: fit-content;
-    text-wrap: nowrap;
     border: 2px #65fbd2 solid;
     border-radius: 1rem;
     padding: 1rem 1rem;
@@ -96,7 +97,6 @@ img{
     position: fixed;
     top: 37vh;
     left: 37vw;
-    border: 0.1rem solid black;
     border-radius: 6px;
     display: flex;
     flex-direction: column;
