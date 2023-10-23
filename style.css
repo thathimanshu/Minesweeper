@@ -25,14 +25,15 @@ img{
     width: 150px;
 }
 .div-b{
-    background-color: gray;
+    background-color: rgb(39, 39, 39);
     height: fit-content;
     width: fit-content;
     text-wrap: nowrap;
-    border: 2px rgb(0, 255, 140) solid;
-    margin: 0rem 3rem;
-    border-radius: 2rem;
-    padding: 1rem 2rem;
+    border: 2px #65fbd2 solid;
+    border-radius: 1rem;
+    padding: 1rem 1rem;
+    align-content: space-around;
+    margin: 1rem 1rem;
 }
 .board{
     margin: auto;
@@ -62,7 +63,7 @@ img{
     border-radius: 10px;
 }
 .button:hover{
-    border-color: greenyellow;
+    border-color: #65fbd2;
 }
 .bomb{
     height: 70%;
@@ -78,7 +79,34 @@ img{
     height: 70%;
     width: 70%;
 }
-
+.banner{
+    height: 35vh;
+    width: 25vw;
+    background-color: #2eadbe;
+    position: fixed;
+    top: 37vh;
+    left: 37vw;
+    border: 0.1rem solid black;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+.bannertext{
+    font-size: 2rem;
+    font-family:'Times New Roman', Times, serif;    
+}
+.reset-button{
+    height: 7vh;
+    width: 10vw;
+    background-color: #00f2bc;
+    border: none;
+    border-radius: 0.75rem;
+}
+.reset-button:hover{
+    background-color: #7df1a1;
+}
 @media (max-width:700px){
     .info{
         align-items: center;
@@ -98,6 +126,5 @@ img{
         font-size: 1.5rem;
         margin: 0 0;
         padding:0 0;
-        
     }
 }

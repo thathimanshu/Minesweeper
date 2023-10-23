@@ -57,13 +57,32 @@ function assignBombAndNum(grid) {
 assignBombAndNum(grid);
 
 function lost(){
-    let allBombs = document.querySelectorAll(".bomb-display");
-    for(bomb of allBombs){
-        if(bomb.classList.contains("bomb-display")){
-            bomb.classList.remove("bomb-display");
-        }
+    let bomb = document.querySelector(".bomb-display");
+    if(bomb!=null && bomb.classList.contains("bomb-display")){
+        bomb.classList.remove("bomb-display");
+        setTimeout(() => {
+            lost();
+        }, 50);
     }
-    assignBombAndNum(grid);
+    else{
+        banner();
+    }
+}
+
+function banner(){
+    let banner = document.createElement("div");
+    banner.classList.add("banner");
+    document.querySelector(".board").appendChild(banner);
+
+    let para = document.createElement("p");
+    banner.appendChild(para);
+    para.innerText = "You Lost";
+    para.classList.add("bannertext");
+    
+    let tryagain = document.createElement("button");
+    tryagain.innerText = "Play Again";
+    tryagain.classList.add("reset-button");
+    banner.appendChild(tryagain);
 }
 
 function openEmpty(grid,i,j){
@@ -115,10 +134,10 @@ function showBomb(event,i,j){
     const img = event.currentTarget.querySelector('.bomb');
     if(img!=null && img.classList.contains("bomb-display")){
         img.classList.remove("bomb-display");
-        lost();
+        
         setTimeout(() => {
-            alert("Lost");
-        }, 100);
+            lost();
+        }, 200);
     }
 }
 function btnPress(event){
