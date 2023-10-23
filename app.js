@@ -137,8 +137,11 @@ function showNum(i,j){
     if (p!=null && p.classList.contains("near-bomb")) {
         visited[i][j] = 1;
         p.classList.remove("near-bomb");
-        if(grid[i][j]==0)
-        openEmpty(grid,i,j);
+        butt.classList.add("clicked");
+        if(grid[i][j]==0){
+            p.classList.add("is-zero");
+            openEmpty(grid,i,j);
+        }
     }
     }
 function showBomb(event,i,j){
@@ -240,6 +243,7 @@ function retry(){
     destroyButts();
     start();
     document.querySelector(".banner").remove();
+
 }
 
 

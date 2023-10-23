@@ -1,6 +1,6 @@
 body{
     text-align: center;
-    background-color: black;
+    background-color:rgb(39, 39, 39);
 }
 *{
     color: white;
@@ -35,6 +35,9 @@ img{
     align-content: space-around;
     margin: 1rem 1rem;
 }
+.custom{
+    background-color: rgb(39, 39, 39);
+}
 .board{
     margin: auto;
     margin-top: 2rem;
@@ -57,10 +60,14 @@ img{
 
 .button{
     background-color: rgb(27, 27, 27);
+    background-color: rgb(27, 27, 27);
     width: 10%;
     padding: 1px 1px;
     margin: 2px;
     border-radius: 10px;
+}
+.clicked{
+    background-color: rgba(209, 209, 209,0.5);
 }
 .button:hover{
     border-color: #65fbd2;
@@ -73,6 +80,9 @@ img{
     display: none;
 }
 .near-bomb{
+    display: none;
+}
+.is-zero{
     display: none;
 }
 .flag{
@@ -93,6 +103,7 @@ img{
     justify-content: space-around;
     align-items: center;
 }
+
 .bannertext{
     font-size: 2rem;
     font-family:'Times New Roman', Times, serif;  
