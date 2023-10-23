@@ -1,9 +1,9 @@
 let rows = 10;
-let grid = new Array(rows).fill().map(() => new Array(rows).fill(0));
+let grid;
 
-let visited = new Array(rows).fill().map(() => new Array(rows).fill(-1));
-let TotalBombs = Math.floor(15*rows*rows/100);
-let bombCount = TotalBombs;
+let visited;
+let totalBombs = Math.floor(15*rows*rows/100);
+let bombCount = totalBombs;
 let board = document.querySelector(".board");
 
 let placed = 0;
@@ -12,20 +12,31 @@ let incorrect = 0;
 let left = document.querySelector(".totalBombs");
 left.textContent = `Bombs left = ${bombCount}`;
 
+start();
+function start(){
+    grid = new Array(rows).fill().map(() => new Array(rows).fill(0));
+    visited = new Array(rows).fill().map(() => new Array(rows).fill(-1));
+    bombCount = totalBombs;
+    placed = 0;
+    incorrect = 0;
+    changeTotalBombs(placed);
+    assignBombAndNum(grid);
+    createBoard();
+}
+
 function changeTotalBombs(placed){
     let total = document.querySelector(".placed");
     total.textContent = `Placed = ${placed}`;
-    left.textContent = `Bombs left = ${TotalBombs-placed}`;
-    if(placed==TotalBombs && incorrect==0){
-        alert("Won");
+    left.textContent = `Bombs left = ${totalBombs-placed}`;
+    if(placed==totalBombs && incorrect==0){
+        banner("won");
     }
 }
-changeTotalBombs(placed);
-
 
 function getRandom(){
     return Math.floor(Math.random()*rows);
 }
+
 function isSafe(grid,i,j){
     if(i<0 || j<0 || i>=rows || j>=rows || grid[i][j]!=-1){
         return false;
@@ -54,7 +65,6 @@ function assignBombAndNum(grid) {
     }
 }
 
-assignBombAndNum(grid);
 
 function lost(){
     let bomb = document.querySelector(".bomb-display");
@@ -65,24 +75,25 @@ function lost(){
         }, 50);
     }
     else{
-        banner();
+        banner("lost");
     }
 }
 
-function banner(){
+function banner(status){
     let banner = document.createElement("div");
     banner.classList.add("banner");
     document.querySelector(".board").appendChild(banner);
 
     let para = document.createElement("p");
     banner.appendChild(para);
-    para.innerText = "You Lost";
+    para.innerText = `You ${status}`;
     para.classList.add("bannertext");
     
     let tryagain = document.createElement("button");
     tryagain.innerText = "Play Again";
     tryagain.classList.add("reset-button");
     banner.appendChild(tryagain);
+    tryagain.addEventListener("click",retry);
 }
 
 function openEmpty(grid,i,j){
@@ -188,30 +199,48 @@ function rightClick(event){
     changeTotalBombs(placed);
     
 }
-for(let i = 0; i<rows;i++){
-    let row = document.createElement("div");
-    row.classList.add("row");
-    for(let j = 0;j<rows;j++){
-        let button =  document.createElement("button");
-        button.classList.add("button");
-        button.classList.add(`g${i}-${j}`);
-        row.appendChild(button);
-        if(grid[i][j]!=-1){
-            button.textContent=grid[i][j];
-            button.innerHTML = `<p class="near-bomb">${grid[i][j]}</p>`;
-
+function createBoard(){
+    for(let i = 0; i<rows;i++){
+        let row = document.createElement("div");
+        row.classList.add("row");
+        for(let j = 0;j<rows;j++){
+            let button =  document.createElement("button");
+            button.classList.add("button");
+            button.classList.add(`g${i}-${j}`);
+            row.appendChild(button);
+            if(grid[i][j]!=-1){
+                button.textContent=grid[i][j];
+                button.innerHTML = `<p class="near-bomb">${grid[i][j]}</p>`;
+    
+            }
+            else{
+                button.innerHTML = '<img class="bomb bomb-display" src="assets/bomb.png">';
+            }
+    
+            button.addEventListener("click",btnPress);
+            button.addEventListener("contextmenu",rightClick);
+    
         }
-        else{
-            button.innerHTML = '<img class="bomb bomb-display" src="assets/bomb.png">';
-        }
-
-        button.addEventListener("click",btnPress);
-        button.addEventListener("contextmenu",rightClick);
-
+        board.appendChild(row);
     }
-    board.appendChild(row);
+}
+function destroyButts(){
+    let elements = document.querySelectorAll(".button");
+    for(cell of elements){
+        cell.remove();
+    }
+    elements = document.querySelectorAll(".row");
+    for(row of elements){
+        row.remove();
+    }
+
 }
 
+function retry(){
+    destroyButts();
+    start();
+    document.querySelector(".banner").remove();
+}
 
 
 
