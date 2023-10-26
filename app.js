@@ -97,10 +97,10 @@ function banner(status){
 }
 
 function openEmpty(grid,i,j){
-    let x = [1,-1,0,0];
-    let y = [0,0,1,-1];
+    let x = [-1,-1,-1,0,0,1,1,1];
+    let y = [-1,0,1,-1,1,-1,0,1];
 
-    for(let k = 0;k<4;k++){
+    for(let k = 0;k<8;k++){
         let newRow = i + x[k];
         let newCol = j + y[k];
         if(newRow>=0 && newRow<rows && newCol>=0 && newCol<rows && visited[newRow][newCol]==-1){
