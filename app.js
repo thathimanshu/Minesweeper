@@ -2,7 +2,7 @@ let rows = 10;
 let grid;
 
 let visited;
-let totalBombs = Math.floor(15*rows*rows/100);
+let totalBombs;
 let bombCount = totalBombs;
 let board = document.querySelector(".board");
 
@@ -11,11 +11,22 @@ let incorrect = 0;
 
 let left = document.querySelector(".totalBombs");
 left.textContent = `Bombs left = ${bombCount}`;
-
 start();
+
+document.querySelector(".custom").addEventListener("click",()=>{
+    document.querySelector(".input-div").style.display = "flex";
+});
+document.querySelector(".inpt-btn").addEventListener("click",()=>{
+    rows = document.querySelector(".inpt").value -0;
+    if(!rows) rows = 10;
+    document.querySelector(".input-div").style.display = "none";
+    console.log(rows);
+    retry();
+});
 function start(){
     grid = new Array(rows).fill().map(() => new Array(rows).fill(0));
     visited = new Array(rows).fill().map(() => new Array(rows).fill(-1));
+    totalBombs = Math.floor(15*rows*rows/100);
     bombCount = totalBombs;
     placed = 0;
     incorrect = 0;
@@ -23,7 +34,6 @@ function start(){
     assignBombAndNum(grid);
     createBoard();
 }
-
 function changeTotalBombs(placed){
     let total = document.querySelector(".placed");
     total.textContent = `Placed = ${placed}`;
@@ -229,11 +239,11 @@ function createBoard(){
 }
 function destroyButts(){
     let elements = document.querySelectorAll(".button");
-    for(cell of elements){
+    for(let cell of elements){
         cell.remove();
     }
     elements = document.querySelectorAll(".row");
-    for(row of elements){
+    for(let row of elements){
         row.remove();
     }
 
@@ -242,8 +252,8 @@ function destroyButts(){
 function retry(){
     destroyButts();
     start();
-    document.querySelector(".banner").remove();
-
+    let bnr = document.querySelector(".banner");
+    if(brn) bnr.remove();
 }
 
 
