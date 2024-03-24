@@ -142,6 +142,13 @@ img{
     border: 2px solid greenyellow;
     cursor: pointer;
 }
+#version{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    color: hsl(0, 0%, 50%);
+    padding: 0.5rem 0.5rem;
+}
 @media (max-width:700px){
     .info{
         align-items: center;
