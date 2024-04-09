@@ -253,7 +253,7 @@ function retry(){
     destroyButts();
     start();
     let bnr = document.querySelector(".banner");
-    if(brn) bnr.remove();
+    if(bnr) bnr.remove();
 }
 
 
